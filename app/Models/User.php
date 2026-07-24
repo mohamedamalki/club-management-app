@@ -5,13 +5,15 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -45,5 +48,29 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function membershipPayments(): HasMany
+    {
+        return $this->hasMany(
+            MembershipPayment::class,
+            'created_by'
+        );
+    }
+
+    public function sponsorshipPayments(): HasMany
+    {
+        return $this->hasMany(
+            SponsorshipPayment::class,
+            'created_by'
+        );
+    }
+
+    public function expenses(): HasMany
+    {
+        return $this->hasMany(
+            Expense::class,
+            'created_by'
+        );
     }
 }

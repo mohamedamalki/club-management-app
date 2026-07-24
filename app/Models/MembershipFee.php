@@ -6,24 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Sponsorship extends Model
+class MembershipFee extends Model
 {
     protected $fillable = [
-        'sponsor_id',
+        'team_id',
         'season_id',
-        'title',
-        'agreed_amount',
-        'start_date',
-        'end_date',
-        'payment_deadline',
-        'contract_file',
+        'name',
+        'amount',
+        'frequency',
+        'due_date',
+        'description',
         'status',
-        'notes',
     ];
 
-    public function sponsor(): BelongsTo
+    public function team(): BelongsTo
     {
-        return $this->belongsTo(Sponsor::class);
+        return $this->belongsTo(Team::class);
     }
 
     public function season(): BelongsTo
@@ -33,6 +31,6 @@ class Sponsorship extends Model
 
     public function payments(): HasMany
     {
-        return $this->hasMany(SponsorshipPayment::class);
+        return $this->hasMany(MembershipPayment::class);
     }
 }
