@@ -31,7 +31,7 @@ class TeamController extends Controller
             'category' => ['required', 'string', 'max:100'],
             'gender' => [
                 'required',
-                Rule::in(['male', 'female', 'mixed']),
+                Rule::in(['male', 'female']),
             ],
             'description' => ['nullable', 'string'],
             'status' => [
@@ -69,7 +69,7 @@ class TeamController extends Controller
             'gender' => [
                 'sometimes',
                 'required',
-                Rule::in(['male', 'female', 'mixed']),
+                Rule::in(['male', 'female']),
             ],
             'description' => ['nullable', 'string'],
             'status' => [
