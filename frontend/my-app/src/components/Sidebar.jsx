@@ -34,10 +34,10 @@ export default function Sidebar({
             "flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition";
 
         if (isActive) {
-            return `${basicClasses} bg-blue-600 text-white`;
+            return `${basicClasses} bg-[#A50044] text-white`;
         }
 
-        return `${basicClasses} text-slate-300 hover:bg-slate-800 hover:text-white`;
+        return `${basicClasses} text-white/60 hover:bg-white/5 hover:text-white`;
     }
 
     return (
@@ -54,7 +54,7 @@ export default function Sidebar({
             <aside
                 className={`
                     fixed inset-y-0 left-0 z-40 flex w-64
-                    transform flex-col bg-slate-900
+                    transform flex-col bg-[#0A1330]
                     transition-transform duration-300
                     lg:translate-x-0
                     ${
@@ -64,22 +64,22 @@ export default function Sidebar({
                     }
                 `}
             >
-                <div className="flex h-16 items-center justify-between border-b border-slate-800 px-5">
+                <div className="flex h-16 items-center justify-between border-b border-white/10 px-5">
                     <NavLink
                         to="/dashboard"
                         onClick={onClose}
                         className="flex items-center gap-3"
                     >
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 font-bold text-white">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#FFED02] bg-[#0A1330] text-sm font-bold text-[#FFED02]">
                             CM
                         </div>
 
                         <div>
-                            <p className="font-bold text-white">
+                            <p className="font-[Barlow_Condensed,Inter,sans-serif] font-bold uppercase tracking-tight text-white">
                                 Club Manager
                             </p>
 
-                            <p className="text-xs text-slate-400">
+                            <p className="text-xs text-white/40">
                                 Administration
                             </p>
                         </div>
@@ -88,7 +88,7 @@ export default function Sidebar({
                     <button
                         type="button"
                         onClick={onClose}
-                        className="text-slate-400 hover:text-white lg:hidden"
+                        className="text-white/50 hover:text-white lg:hidden"
                         aria-label="Close sidebar"
                     >
                         <X size={22} />
@@ -114,8 +114,8 @@ export default function Sidebar({
                     })}
                 </nav>
 
-                <div className="border-t border-slate-800 p-4">
-                    <p className="text-xs text-slate-500">
+                <div className="border-t border-white/10 p-4">
+                    <p className="text-xs text-white/30">
                         Club Management System
                     </p>
                 </div>

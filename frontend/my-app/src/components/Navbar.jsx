@@ -4,7 +4,7 @@ import {
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
-import  useAuth  from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 export default function Navbar({
     onOpenSidebar,
@@ -28,14 +28,14 @@ export default function Navbar({
                 <button
                     type="button"
                     onClick={onOpenSidebar}
-                    className="rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 lg:hidden"
+                    className="rounded-lg p-2 text-[#0A1330] transition hover:bg-slate-100 lg:hidden"
                     aria-label="Open sidebar"
                 >
                     <Menu size={24} />
                 </button>
 
                 <div>
-                    <p className="font-semibold text-slate-800">
+                    <p className="font-[Barlow_Condensed,Inter,sans-serif] font-semibold uppercase tracking-tight text-[#0A1330]">
                         Administration
                     </p>
 
@@ -47,7 +47,7 @@ export default function Navbar({
 
             <div className="flex items-center gap-3">
                 <div className="hidden text-right sm:block">
-                    <p className="text-sm font-medium text-slate-800">
+                    <p className="text-sm font-medium text-[#0A1330]">
                         {user?.name}
                     </p>
 
@@ -56,14 +56,14 @@ export default function Navbar({
                     </p>
                 </div>
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-700">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#A50044]/10 font-bold text-[#A50044]">
                     {firstLetter}
                 </div>
 
                 <button
                     type="button"
                     onClick={handleLogout}
-                    className="rounded-lg p-2 text-slate-500 transition hover:bg-red-50 hover:text-red-600"
+                    className="rounded-lg p-2 text-slate-500 transition hover:bg-[#A50044]/10 hover:text-[#A50044]"
                     aria-label="Logout"
                     title="Logout"
                 >

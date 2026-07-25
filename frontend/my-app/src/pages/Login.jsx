@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import  useAuth  from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 function Login() {
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ function Login() {
         try {
             await login(formData);
             navigate("/dashboard");
-        }  catch (error) {
+        } catch (error) {
             if (error.response?.status === 401) {
                 setError("The email or password is incorrect.");
             } else if (error.response?.status === 422) {
@@ -50,82 +50,145 @@ function Login() {
     }
 
     return (
-        <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4">
-            <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
-                <div className="mb-8 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-2xl font-bold text-white">
+        <main className="flex min-h-screen w-full bg-[#F5F4F1] font-[Inter,sans-serif]">
+            {/* LEFT: brand panel */}
+            <section className="relative hidden w-1/2 flex-col justify-between overflow-hidden bg-[#0A1330] px-14 py-12 lg:flex">
+                {/* blaugrana stripes, restrained to a corner accent */}
+                <div
+                    className="pointer-events-none absolute inset-y-0 -left-24 w-[130%] opacity-90"
+                    style={{
+                        backgroundImage:
+                            "repeating-linear-gradient(100deg, #A50044 0px, #A50044 46px, #004D98 46px, #004D98 92px)",
+                        WebkitMaskImage:
+                            "linear-gradient(to right, black 0%, black 22%, transparent 60%)",
+                        maskImage:
+                            "linear-gradient(to right, black 0%, black 22%, transparent 60%)",
+                    }}
+                />
+
+                <div className="relative z-10 flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#FFED02] bg-[#0A1330] text-sm font-bold tracking-wide text-[#FFED02]">
                         CM
                     </div>
-
-                    <h1 className="text-2xl font-bold text-slate-800">
+                    <span className="text-sm font-medium uppercase tracking-[0.2em] text-white/70">
                         Club Management
-                    </h1>
+                    </span>
+                </div>
 
-                    <p className="mt-2 text-sm text-slate-500">
-                        Sign in to the administration dashboard
+                <div className="relative z-10 max-w-md">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#FFED02]">
+                        Administration
+                    </p>
+                    <h1 className="font-[Barlow_Condensed,Inter,sans-serif] text-6xl font-bold uppercase leading-[0.95] text-white">
+                        Fc Barcelona
+                        <br />
+                        More Than just
+                        <br />
+                        a Team.
+                    </h1>
+                    <div className="mt-6 h-1 w-16 bg-[#FFED02]" />
+                    <p className="mt-6 text-sm leading-relaxed text-white/60">
+                        Members, fixtures, and finances for the whole club,
+                        in one dashboard.
                     </p>
                 </div>
 
-                {error && (
-                    <div
-                        className="mb-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
-                        role="alert"
-                    >
-                        {error}
-                    </div>
-                )}
+                <p className="relative z-10 text-xs text-white/40">
+                    © {new Date().getFullYear()} Club Management. All rights reserved.
+                </p>
+            </section>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                        <label
-                            htmlFor="email"
-                            className="mb-2 block text-sm font-medium text-slate-700"
+            {/* RIGHT: form panel */}
+            <section className="flex w-full items-center justify-center px-6 py-12 lg:w-1/2">
+                <div className="w-full max-w-sm">
+                    {/* mobile-only crest, since the brand panel is hidden below lg */}
+                    <div className="mb-8 flex items-center gap-3 lg:hidden">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#A50044] text-sm font-bold text-white">
+                            CM
+                        </div>
+                        <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0A1330]">
+                            Club Management
+                        </span>
+                    </div>
+
+                    <div className="mb-8">
+                        <h2 className="font-[Barlow_Condensed,Inter,sans-serif] text-3xl font-bold uppercase tracking-tight text-[#0A1330]">
+                            Sign in
+                        </h2>
+                        <p className="mt-2 text-sm text-slate-500">
+                            Access the administration dashboard.
+                        </p>
+                    </div>
+
+                    {error && (
+                        <div
+                            className="mb-6 flex items-start gap-2 rounded-lg border border-[#A50044]/20 bg-[#A50044]/5 px-4 py-3 text-sm text-[#A50044]"
+                            role="alert"
                         >
-                            Email address
-                        </label>
+                            {error}
+                        </div>
+                    )}
 
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            autoComplete="email"
-                            placeholder="admin@club.com"
-                            required
-                            className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-                        />
-                    </div>
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                        <div>
+                            <label
+                                htmlFor="email"
+                                className="mb-2 block text-sm font-medium text-[#0A1330]"
+                            >
+                                Email address
+                            </label>
 
-                    <div>
-                        <label
-                            htmlFor="password"
-                            className="mb-2 block text-sm font-medium text-slate-700"
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                autoComplete="email"
+                                placeholder="admin@club.com"
+                                required
+                                className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-[#0A1330] outline-none transition focus:border-[#004D98] focus:ring-2 focus:ring-[#004D98]/15"
+                            />
+                        </div>
+
+                        <div>
+                            <div className="mb-2 flex items-center justify-between">
+                                <label
+                                    htmlFor="password"
+                                    className="block text-sm font-medium text-[#0A1330]"
+                                >
+                                    Password
+                                </label>
+                                <a
+                                    href="/forgot-password"
+                                    className="text-xs font-medium text-[#004D98] hover:text-[#A50044]"
+                                >
+                                    Forgot password?
+                                </a>
+                            </div>
+
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                autoComplete="current-password"
+                                placeholder="Enter your password"
+                                required
+                                className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-[#0A1330] outline-none transition focus:border-[#004D98] focus:ring-2 focus:ring-[#004D98]/15"
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full rounded-lg bg-[#A50044] px-4 py-3 font-semibold text-white transition hover:bg-[#8a0038] disabled:cursor-not-allowed disabled:bg-[#A50044]/50"
                         >
-                            Password
-                        </label>
-
-                        <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            autoComplete="current-password"
-                            placeholder="Enter your password"
-                            required
-                            className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-                        />
-                    </div>
-
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-400"
-                    >
-                        {loading ? "Signing in..." : "Sign in"}
-                    </button>
-                </form>
+                            {loading ? "Signing in..." : "Sign in"}
+                        </button>
+                    </form>
+                </div>
             </section>
         </main>
     );
