@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CoachController;
+use App\Http\Controllers\Api\CoachTeamController;
 use App\Http\Controllers\Api\SeasonController;
 use App\Http\Controllers\Api\TeamController;
 use Illuminate\Support\Facades\Route;
@@ -14,4 +16,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('seasons', SeasonController::class);
     Route::apiResource('teams', TeamController::class);
+    Route::apiResource('coaches', CoachController::class);
+    Route::apiResource('coach-assignments', CoachTeamController::class);
 });
