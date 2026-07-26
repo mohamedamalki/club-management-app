@@ -29,4 +29,13 @@ class Season extends Model
     {
         return $this->hasMany(Expense::class);
     }
+    public function playerCharges(): HasMany
+    {
+        return $this->hasMany(PlayerCharge::class);
+    }
+
+    public function coachPayments(): HasMany
+    {
+        return $this->hasMany(CoachPayment::class);
+    }
 }

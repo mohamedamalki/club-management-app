@@ -14,10 +14,6 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('expense_category_id')
-                ->constrained()
-                ->restrictOnDelete();
-
             $table->foreignId('season_id')
                 ->nullable()
                 ->constrained()

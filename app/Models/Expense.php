@@ -11,7 +11,6 @@ class Expense extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'expense_category_id',
         'season_id',
         'team_id',
         'description',
@@ -23,14 +22,6 @@ class Expense extends Model
         'notes',
         'created_by',
     ];
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(
-            ExpenseCategory::class,
-            'expense_category_id'
-        );
-    }
 
     public function season(): BelongsTo
     {

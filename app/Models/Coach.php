@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Coach extends Model
 {
@@ -35,5 +36,9 @@ class Coach extends Model
                 'status',
             ])
             ->withTimestamps();
+    }
+    public function payments(): HasMany
+    {
+        return $this->hasMany(CoachPayment::class);
     }
 }
