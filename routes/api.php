@@ -12,7 +12,7 @@ use App\Http\Controllers\Api\PlayerTeamController;
 use App\Http\Controllers\Api\SeasonController;
 use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Api\PlayerChargeController;
-
+use App\Http\Controllers\Api\SponsorController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login'])
@@ -65,4 +65,5 @@ Route::middleware('auth:sanctum')->group(function () {
         'coach-payments',
         CoachPaymentController::class
     );
+    Route::apiResource('sponsors', SponsorController::class);
 });

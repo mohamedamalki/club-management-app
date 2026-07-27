@@ -2,7 +2,6 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
     CalendarDays,
-    ClipboardList,
     CreditCard,
     ChevronDown,
     LayoutDashboard,
@@ -11,6 +10,7 @@ import {
     Users,
     WalletCards,
     X,
+    Handshake
 } from "lucide-react";
 
 const navigation = [
@@ -57,22 +57,6 @@ const navigation = [
         ],
     },
     {
-        name: "Assignments",
-        icon: ClipboardList,
-        children: [
-            {
-                name: "Player assignments",
-                path: "/player-assignments",
-                icon: ClipboardList,
-            },
-            {
-                name: "Coach assignments",
-                path: "/coach-assignments",
-                icon: ClipboardList,
-            },
-        ],
-    },
-    {
         name: "Finances",
         icon: WalletCards,
         children: [
@@ -95,6 +79,11 @@ const navigation = [
                 name: "Coach payments",
                 path: "/coach-payments",
                 icon: WalletCards,
+            },
+            {
+                name: "Sponsors",
+                path: "/sponsors",
+                icon: Handshake,
             },
         ],
     },
@@ -158,7 +147,7 @@ export default function Sidebar({ isOpen, onClose }) {
                         onClick={onClose}
                         className="flex items-center gap-3"
                     >
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#FFED02] bg-[#0A1330] text-sm font-bold text-[#FFED02]">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-[#0A1330] text-sm font-bold text-white">
                             CM
                         </div>
 
