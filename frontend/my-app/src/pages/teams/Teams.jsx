@@ -155,6 +155,9 @@ export default function Teams() {
                 );
 
                 setMessage("Team updated successfully.");
+                setTimeout(()=>{
+                    setMessage("")
+                },3000)
             } else {
                 const response = await api.post(
                     "/teams",
