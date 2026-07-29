@@ -30,7 +30,9 @@ import Expenses from "./pages/finances/Expenses";
 import CoachPayments from "./pages/finances/CoachPayments";
 
 import NotFound from "./pages/NotFound";
-import Sponsors from "./pages/finances/Sponsors";
+import Sponsors from "./pages/sponsor mangement/Sponsors";
+import SponsorShips from "./pages/sponsor mangement/SponsorShips";
+import SponsorshipPayments from "./pages/sponsor mangement/SponsorshipPayment";
 
 export default function App() {
     return (
@@ -129,6 +131,14 @@ export default function App() {
                 <Route
                     path="sponsors"
                     element={<Sponsors />}
+                />
+                <Route
+                    path="sponsor-ships"
+                    element={<SponsorShips />}
+                />
+                <Route
+                    path="/sponsorship-payments"
+                    element={<SponsorshipPayments />}
                 />
             </Route>
 

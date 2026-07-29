@@ -10,7 +10,10 @@ import {
     Users,
     WalletCards,
     X,
-    Handshake
+    Handshake,
+    Building2,
+    FileSignature,
+    Banknote
 } from "lucide-react";
 
 const navigation = [
@@ -80,13 +83,29 @@ const navigation = [
                 path: "/coach-payments",
                 icon: WalletCards,
             },
+        ],
+    },
+    {
+        name: "Sponsors Management" ,
+        icon : Handshake  ,
+        children: [
             {
                 name: "Sponsors",
                 path: "/sponsors",
-                icon: Handshake,
+                icon: Building2,
             },
-        ],
-    },
+            {
+                name:"SponsorShips",
+                path: "/sponsor-ships",
+                icon:FileSignature
+            },
+            {
+                name:"SponsorshipPayments",
+                path:"/sponsorship-payments",
+                icon:Banknote
+            }
+        ]
+    }
 ];
 
 export default function Sidebar({ isOpen, onClose }) {
